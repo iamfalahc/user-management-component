@@ -33,8 +33,7 @@ li {
   align-items: center;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 6px 10px;
-  width: 50%;
-  margin: auto;
+
 }
 li span {
   text-align: left;
