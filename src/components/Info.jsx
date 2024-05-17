@@ -1,16 +1,15 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Info = () => {
-  const [data, setData] = useState([]);
-  const [searchParams] = useSearchParams();
-  const userId = searchParams.get("id");
+  const [data, setData] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
-    if (userId) {
+    if (id) {
       axios
-        .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        .get(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((response) => {
           setData(response.data);
         })
@@ -18,7 +17,7 @@ const Info = () => {
           console.log(error);
         });
     }
-  }, [userId]);
+  }, [id]);
 
   return (
     <div>
@@ -27,7 +26,6 @@ const Info = () => {
         <li>Name: {data.name}</li>
         <li>Email: {data.email}</li>
         <li>Phone: {data.phone}</li>
-        {/* Add more user info as needed */}
       </ul>
     </div>
   );
